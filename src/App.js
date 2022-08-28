@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
 
 const Home = lazy(() => import('./pages/Home'));
 const Results = lazy(() => import('./pages/Results'));
@@ -7,6 +8,8 @@ const Results = lazy(() => import('./pages/Results'));
 const App = () => (
   <Router>
     <Routes>
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<Login />} />
       <Route
         path="/poll"
         element={

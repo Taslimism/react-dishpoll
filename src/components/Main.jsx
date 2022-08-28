@@ -8,10 +8,14 @@ const GridView = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(
-        'https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json',
-      );
-      setMenu(data);
+      try {
+        const { data } = await axios.get(
+          'https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json',
+        );
+        setMenu(data);
+      } catch (error) {
+        // TODO: Handle error here
+      }
     })();
   }, []);
 
